@@ -1,3 +1,5 @@
+<p align="center"><a href="#"><img src="public/logo.png" title="demo" alt="demo" height="100px" ></a></p>
+
 # FinanceMaster
 
 [FinanceMaster](https://financemaster.onrender.com/) is an open-source project whose aim is to track and analyse the incomes and expenditures of the users, providing useful charts and data.
