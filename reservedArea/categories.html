@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceMaster - Manage your categories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="./styles/categories.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8706b528d6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">
+                <img src="/logo.png" alt="Logo" width="30" height="30"  class="d-inline-block align-text-top">
+                    FinanceMaster - Your categories
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <div class="dropdown"><a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user"></i> Hi, <span id="username"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" id="logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    <a class="nav-link active" aria-current="page" href="/reservedArea/"><i class="fa-solid fa-house"></i> Home</a>
+                    <a class="nav-link active" aria-current="page" href="./categories.html"><i class="fa-solid fa-gear"></i> Manage your categories</a>
+                    <a class="nav-link active" aria-current="page" style="cursor: pointer;" id="switchTheme"><i class="fa-solid fa-sun" id="themeIcon"></i></a>
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+
+    <!-- Vertically centered modal -->
+    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="categoryModal">Update category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="categoryName">Name of category: </label><input class="form-control" type="text" id="categoryName">
+                    <label for="categoryColor">Color: </label> <input type="color" class="form-control" id="categoryColor">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="updateCategory">Update</button>
+                    <button type="button" class="btn btn-danger" id="deleteCategory">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Vertically centered modal for new expenditure category -->
+     <div class="modal fade" id="newExpenditureCategoryModal" tabindex="-1" aria-labelledby="newExpenditureCategoryModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newExpenditureCategoryModal">Add a new Expenditure category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="expenditureCategoryName">Name of category: </label><input class="form-control" type="text" id="expenditureCategoryName">
+                    <label for="expenditureCategoryColor">Color: </label> <input type="color" class="form-control" id="expenditureCategoryColor">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="addExpenditureCategory">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Vertically centered modal for new expenditure category -->
+     <div class="modal fade" id="newIncomeCategoryModal" tabindex="-1" aria-labelledby="newIncomeCategoryModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newIncomeCategoryModal">Add a new Income category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="incomeCategoryName">Name of category: </label><input class="form-control" type="text" id="incomeCategoryName">
+                    <label for="incomeCategoryColor">Color: </label> <input type="color" class="form-control" id="incomeCategoryColor">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="addIncomeCategory">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">        
+        <div class="row gy-3 gx-5">
+            <h4 class="display-4">Your Expenditures categories
+                <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Here you can see all your expenditure categories, click to update"></i></h4>
+            <div class="col-12">
+                <div class="row gx-5 gy-3" id="expendituresCategories"></div>
+            </div>
+            <div class="col-12">
+                <div class="col text-center">
+                    <button class="btn btn-danger w-100" id="addExpenditureCategory" data-bs-toggle="modal" data-bs-target="#newExpenditureCategoryModal">Add a new expenditure category</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row gy-3 gx-5">
+            <h4 class="display-4">Your Incomes categories
+                <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Here you can see all your expenditure categories, click to update"></i></h4>
+            <div class="col-12">
+                <div class="row gx-5 gy-3" id="incomesCategories"></div>
+            </div>
+            <div class="col-12">
+                <div class="col text-center">
+                    <button class="btn btn-success w-100 align-content-center" id="addIncomeCategory" data-bs-toggle="modal" data-bs-target="#newIncomeCategoryModal">Add a new income category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="./scripts/utilities.js"></script>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="./scripts/categories.js"></script>
+</body>
+</html>

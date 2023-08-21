@@ -1,0 +1,14 @@
+#incomesIcon, #expendituresIcon{
+    font-size: 50px;
+}
+.fa-circle-info{
+    font-size: 20px;
+    vertical-align: super;
+}
+.table-responsive{
+    height: 45vh;
+    width: 100%;
+}
+.p-5{
+    color:white;
+}
